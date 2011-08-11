@@ -14,10 +14,7 @@
 # through each row of the |N| by |M| matrix that represents the solution space
 # of f(i,j).
 #
-# WARNING: We must be careful to iterate BACKWARDS (from |M| to 0),
-# or else the old values will get clobbered!
-#
-# But actually we only need to store one row of the matrix at any
+# But actually we only need to store the previous row of the matrix at any
 # one time!
 # So this algorithm takes quadratic time and linear space!
 
