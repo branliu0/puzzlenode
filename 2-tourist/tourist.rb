@@ -45,7 +45,7 @@ end
 
 class Integer
   def to_time
-    sprintf("%02d:%02d", self / 60, self % 60)
+    "%02d:%02d" % [ self / 60, self % 60 ]
   end
 end
 
@@ -71,7 +71,7 @@ File.open(ARGV[0]) do |file|
     cheapest = best_flight(flights, method(:lowest_cost), START_CITY, nil, nil, 0)
     fastest = best_flight(flights, method(:least_time), START_CITY, nil, nil, 0)
     [cheapest, fastest].each do |a|
-      puts [a[:start].to_time, a[:stop].to_time, a[:cost].round(2)].join(" ")
+      puts [a[:start].to_time, a[:stop].to_time, "%.2f" % a[:cost].round(2)].join(" ")
     end
     puts unless trip_num == num_trips - 1
   end
