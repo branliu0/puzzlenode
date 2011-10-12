@@ -21,13 +21,13 @@
 # Returns the length of the Longest Common Subsequence of the two provided
 # strings
 def lcs(a, b)
-  old = Array.new(b.length, 0)
-  (1...a.length).each do |i| # Skip the first row, which is all zeroes anyway
+  old = Array.new(b.length + 1, 0)
+  (1..a.length).each do |i| # Skip the first row, which is all zeroes anyway
     memo = Array.new
-    (0...b.length).each do |j|
+    (0..b.length).each do |j|
       if j == 0
         memo[j] = 0
-      elsif a[i] == b[j]
+      elsif a[i - 1] == b[j - 1]
         memo[j] = old[j-1] + 1
       else
         memo[j] = [memo[j-1], old[j]].max
